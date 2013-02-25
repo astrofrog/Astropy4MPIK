@@ -11,6 +11,25 @@ Handling FITS files
 
               from astropy.io import fits
 
+Documentation
+-------------
+
+For more information about the features presented below, you can read the
+`astropy.io.fits <http://docs.astropy.org/en/v0.2/io/fits/index.html>`_ docs.
+
+Before you proceed
+------------------
+
+Download the following file (TODO: URL) and then expand it and go into this
+directory::
+
+    tar xvzf astropy4mpik.tar.gz
+    cd astropy4mpik
+
+Then start up IPython with the ``--pylab`` option to enable easy plotting::
+
+    ipython --pylab
+
 Reading FITS files and accessing data
 -------------------------------------
 

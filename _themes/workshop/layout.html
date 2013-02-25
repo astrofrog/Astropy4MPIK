@@ -9,10 +9,6 @@
 #}
 {% extends "basic/layout.html" %}
 
-{# put the sidebar before the body #}
-{% block sidebar1 %}{{ sidebar() }}{% endblock %}
-{% block sidebar2 %}{% endblock %}
-
 {%- block extrahead %}
 {{ super() }}
 <script type="text/javascript"> 
@@ -60,6 +56,10 @@ display:none;
 
 </script>
 {% endblock %}
+
+{# put the sidebar before the body #}
+{% block sidebar1 %}{{ sidebar() }}{% endblock %}
+{% block sidebar2 %}{% endblock %}
 
 {% block footer %}
  <small>Copyright:
