@@ -2,7 +2,15 @@ Tabular data
 ============
 
 Astropy includes a class for representing arbitrary tabular data in
-``astropy.table``.
+``astropy.table``, called ``Table``. This class can be imported with::
+
+    from astropy.table import Table
+    
+You may need to also import the ``Column`` class, depending on how you are
+definining your table (see below)::
+
+    from astropy.table import Table, Column
+
 
 Constructing and Manipulating tables
 ------------------------------------
@@ -135,3 +143,48 @@ Reading and writing tables
 easily read and write the tables to different formats.
 
 TODO
+
+Practical Exercises
+-------------------
+
+.. admonition::  Level 1
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
+
+Solution
+
+.. raw:: html
+
+   </div>
+   
+.. admonition::  Level 2
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2">
+
+Solution
+
+.. raw:: html
+
+   </div>
+   
+.. admonition::  Level 3
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
+
+Solution
+
+.. raw:: html
+
+   </div>

@@ -97,4 +97,51 @@ Astronomy, and these are defined with units attached to them using the
     >>> F.to(u.N)
     <Quantity 0.05792707869188191 N>
 
-The full list of available physical constants is shown HERE (and additions are welcome!).
+The full list of available physical constants is shown `here
+<http://docs.astropy.org/en/v0.2/constants/index.html#module-astropy.constants>
+`_ (and additions are welcome!).
+
+Practical Exercises
+-------------------
+
+.. admonition::  Level 1
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
+
+Solution
+
+.. raw:: html
+
+   </div>
+   
+.. admonition::  Level 2
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2">
+
+Solution
+
+.. raw:: html
+
+   </div>
+   
+.. admonition::  Level 3
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
+
+Solution
+
+.. raw:: html
+
+   </div>

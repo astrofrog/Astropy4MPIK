@@ -1,13 +1,15 @@
 Handling FITS files
 ===================
 
-.. note:: For users previously familiar with PyFITS, `astropy.io.fits` is in fact the same code as the latest version of PyFITS, and you can adapt old scripts that use PyFITS to use Astropy by simply doing::
+.. note:: If you are already familiar with PyFITS, `astropy.io.fits` is in
+          fact the same code as the latest version of PyFITS, and you can
+          adapt old scripts that use PyFITS to use Astropy by simply doing::
 
-        from astropy.io import fits as pyfits
+              from astropy.io import fits as pyfits
 
-    However, for new scripts, we recommend the following import::
+          However, for new scripts, we recommend the following import::
 
-        from astropy.io import fits
+              from astropy.io import fits
 
 Reading FITS files and accessing data
 -------------------------------------
@@ -15,11 +17,11 @@ Reading FITS files and accessing data
 Opening a FITS file is relatively straightforward::
 
     >>> from astropy.io import fits
-
     >>> hdulist = fits.open('MSX_E.fits')
 
 The returned object, ``hdulist``, behaves like a Python list, and each element
-maps to a Header-Data Unit (HDU) in the file. You can view more information about the FITS file with:
+maps to a Header-Data Unit (HDU) in the FITS file. You can view more
+information about the FITS file with:
 
     >>> hdulist.info()
     Filename: MSX_E.fits
@@ -72,9 +74,7 @@ behaves like a dictionary, can be used to access the header information::
 Modifying data or header information in a FITS file object is easy::
 
     >>> hdu.header['TELESCOP'] = "Midcourse Space eXperiment"
-
     >>> hdu.header['SIGMA'] = 18.  # adds a new keyword
-
     >>> hdu.data = 2. * hdu.data - 1
 
 Note that this does not change the original FITS file, simply the FITS file
@@ -99,10 +99,9 @@ If you want to create a FITS file from scratch, you need to start off by creatin
 and you can then populate the data and header attributes with whatever information you like::
 
     >>> import numpy as np
-
     >>> hdu.data = np.random.random((128,128))
 
-Note that setting the data already populates the header with basic information:
+Note that setting the data automatically populates the header with basic information:
 
     >>> hdu.header
     SIMPLE  =                    T / conforms to FITS standard
@@ -124,6 +123,56 @@ If the file already exists, you can overwrite it with::
 
     >>> hdu.writeto('random_array.fits', clobber=True)
 
-Exercise
---------
-      
+Convenience functions
+---------------------
+
+In cases where you just want to access the data or header in a specific HDU,
+you can use the following convenience functions::
+
+    >>> data = fits.getdata('MSX_E.fits')
+    >>> header = fits.getheader('MSX_E.fits')
+
+Practical Exercises
+-------------------
+
+.. admonition::  Level 1
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
+
+Solution
+
+.. raw:: html
+
+   </div>
+   
+.. admonition::  Level 2
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2">
+
+Solution
+
+.. raw:: html
+
+   </div>
+   
+.. admonition::  Level 3
+
+    Question here
+
+.. raw:: html
+
+   <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
+
+Solution
+
+.. raw:: html
+
+   </div>
