@@ -88,6 +88,8 @@ Practical Exercises
 
    <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
+::
+
     >>> from astropy import coordinates as coord
     >>> crab = coord.ICRSCoordinates.from_name('M1')
     >>> print crab
@@ -145,4 +147,4 @@ Practical Exercises
 
 .. admonition::  Level 3
 
-    For fun, try and reproduce `this <http://www.mpe.mpg.de/236548/rosat-allsky.jpg>`_!
+    Try and make a plot similar to `this <http://www.mpe.mpg.de/236548/rosat-allsky.jpg>`_!
