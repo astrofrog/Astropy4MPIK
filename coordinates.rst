@@ -66,7 +66,7 @@ object::
 
 This works for any coordinate class::
 
-    >>> c_gal = coord.GalacticCoordinates.from_name("M42")
+    >>> c_gal = coord.GalacticCoordinates.from_name("M16")
     >>> c_gal
     <GalacticCoordinates l=16.95408 deg, b=0.79335 deg>
 
