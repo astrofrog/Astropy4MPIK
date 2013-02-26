@@ -11,6 +11,24 @@ definining your table (see below)::
 
     from astropy.table import Table, Column
 
+Documentation
+-------------
+
+For more information about the features presented below, you can read the
+`astropy.table <http://docs.astropy.org/en/v0.2/table/index.html>`_ docs.
+
+Before you proceed
+------------------
+
+If you have not already done so, download the following file (TODO: URL) and
+then expand it and go into this directory::
+
+    tar xvzf astropy4mpik.tar.gz
+    cd astropy4mpik
+
+Then start up IPython with the ``--pylab`` option to enable easy plotting::
+
+    ipython --pylab
 
 Constructing and Manipulating tables
 ------------------------------------

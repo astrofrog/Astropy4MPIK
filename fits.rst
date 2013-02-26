@@ -127,7 +127,9 @@ which gives:
 .. image:: lat_background_slice0.png
 
 Note that this is just a plot of an array, so the coordinates are just pixel
-coordinates at this stage.
+coordinates at this stage. The data is stored with longitude increasing to the
+right (the opposite of the normal convention), but the Level 3 problem at the
+bottom of this page shows how to correctly flip the image.
 
 Modifying data or header information in a FITS file object is easy. We can
 update existing header keywords::
