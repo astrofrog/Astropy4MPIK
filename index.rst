@@ -26,18 +26,13 @@ their level.
    :maxdepth: 1
 
    emergency_install
+   running
+   types
    fits
    wcs
    tables
    units
    coordinates
-   
-Additional topics to consider:
-
-- Cosmological functionality
-- Time conversion
-- How to contribute
-- Where to get help
 
 Acknowledgments
 ---------------
