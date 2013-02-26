@@ -208,8 +208,8 @@ as look-up tables::
     {'flux': 4.5, 'dec': 41.27, 'name': 'm31', 'ra': 10.68}
 
 
-Numpy arrays
-------------
+Numpy arrays (not a built-in type!)
+-----------------------------------
 
 `Numpy <http://www.numpy.org>`_ is a package that provides a data type we will
 refer to as a Numpy array. This behaves similarly to arrays in e.g. Fortran or
