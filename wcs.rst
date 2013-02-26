@@ -22,8 +22,9 @@ For more information about the features presented below, you can read the
 Before you proceed
 ------------------
 
-If you have not already done so, download the following file (TODO: URL) and
-then expand it and go into this directory::
+If you have not already done so, download
+`this <http://mpia.de/~robitaille/python/astropy4mpik.tar.gz>`_ file and then
+expand it and go into this directory::
 
     tar xvzf astropy4mpik.tar.gz
     cd astropy4mpik

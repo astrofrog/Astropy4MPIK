@@ -59,7 +59,7 @@ However, there is one case where this happens but is not desirable, and that you
     >>> 3 / 2
     1
 
-This is behavior is widely regarded as a huge design mistake and Python 3.x has been fixed to behave like you would expect (more on Python 3.x later). A way to prevent this is to cast at least one of the integers in the division to a ``float``::
+This behavior is widely regarded as a huge design mistake and Python 3.x has been fixed to behave like you would expect (more on Python 3.x later). A way to prevent this is to cast at least one of the integers in the division to a ``float``::
 
     >>> 3 / float(2)
     1.5
@@ -118,11 +118,11 @@ One useful operation with lists and tuples is ``+``, which can be used for conca
     >>> ('spam', 'egg') + ('more spam','!')
     ('spam', 'egg', 'more spam', '!')
 
-.. note:: Unlike Numpy arrays:
+Lists can be *sliced*, meaning that we extract a chunk from the list::
 
-    * Python lists can contain anything, including other lists, objects, or complex data structures.
-    * When you slice a Python list it returns a copy.
-    * Vector math does not work on lists. For example, multiplying a list by an int ``n`` gives ``n`` copies of the list, adding another list concatentates, and multiplying by a float gives an error.
+    >>> a = ['spam', 'egg', 'bacon']
+    >>> a[0:2]
+    ['spam', 'egg']
 
 Sets (``set``) are a third type of sequence which you can make from a tuple or a list::
 
@@ -231,13 +231,19 @@ similarly to other languages. Indexing is zero-based (the first element is
 array made from ``a[0]`` and ``a[1]``). Slicing an array return a
 **reference**, not a copy, of the data.
 
+.. note:: How Python lists are different from Numpy arrays:
+
+    * Python lists can contain anything, including other lists, objects, or complex data structures.
+    * When you slice a Python list it returns a copy.
+    * Vector math does not work on lists. For example, multiplying a list by an int ``n`` gives ``n`` copies of the list, adding another list concatentates, and multiplying by a float gives an error.
+
 A note on Python objects
 ------------------------
 
 Most things in Python are objects.  But what is an object?
 
-Every constant, variable, or function in Python is actually a object with a
-type and associated attributes and methods. An *attribute* a property of the
+Every variable or function in Python is actually a object with a
+type and associated attributes and methods. An *attribute* is a property of the
 object that you get or set by giving the <object_name> + dot +
 <attribute_name>, for example ``img.shape``. A *method* is a function that the
 object provides, for example ``img.argmax(axis=0)`` or ``img.min()``.
@@ -265,7 +271,7 @@ remember object methods!**
     a.__format__        a.__init__          a.__reduce_ex__     a.__subclasshook__  a.sort
 
 For the most part you can ignore all the ones that begin with ``__`` since
-they are generally are internal methods that are not called directly.  At
+they are generally internal methods that are not called directly.  At
 the end you see useful looking functions like ``append`` or ``sort`` which
 you can get help for and use::
 
