@@ -214,7 +214,7 @@ Note about FITS tables
     
 In Astropy 0.2, FITS tables cannot be read/written directly from the ``Table``
 class. To create a ``Table`` object from a FITS table, you can use
-``astropy.io.fits`` to read in the table to a Numpy array, then initialize the
+``astropy.io.fits`` to `read in the table to a Numpy array <https://python4mpik.readthedocs.org/en/latest/fits.html#accessing-tabular-data>`_, then initialize the
 table with it::
 
     >>> from astropy.io import fits
