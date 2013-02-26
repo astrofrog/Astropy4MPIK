@@ -48,5 +48,5 @@ Astronomers workshop at `http://python4astronomers.github.com
 <http://python4astronomers.github.com>`_, which was developed by Tom Aldcroft, Tom Robitaille, Brian Refsdal, Gus Muench and the Smithsonian Astrophysical Observatory
 creation.
 
-:Authors: Tom Robitaille
+:Authors: Thomas Robitaille
 :Copyright: 2013 Thomas Robitaille
