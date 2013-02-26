@@ -20,6 +20,10 @@ on practical exercises. Each session will have exercises of increasing
 difficulty, so that both beginners and experienced users can find something at
 their level.
 
+Advanced users can always go and look at the `documentation
+<http://docs.astropy.org/en/v0.2/>`_ if certain topics (e.g. running Python
+and data types) are already known.
+
 **Workshop topics**
 
 .. toctree::
