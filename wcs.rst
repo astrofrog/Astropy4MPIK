@@ -126,7 +126,7 @@ image have a valid position on the sky.
 
 .. admonition::  Level 2
 
-    Extract and print out the flux in the ROSAT map at the position of the LAT
+    Extract and print out the values in the ROSAT map at the position of the LAT
     Point Sources (from the FITS tutorial)
 
 .. raw:: html
@@ -166,11 +166,11 @@ image have a valid position on the sky.
     px = np.round(px).astype(int)
     py = np.round(py).astype(int)
 
-    # Find the ROSAT fluxes (note the reversed index order)
-    fluxes = image[py, px]
+    # Find the ROSAT values (note the reversed index order)
+    values = image[py, px]
 
-    # Print out the fluxes
-    print fluxes
+    # Print out the values
+    print values
 
 which gives::
 
