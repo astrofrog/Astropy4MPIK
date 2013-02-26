@@ -287,8 +287,9 @@ Practical Exercises
 .. admonition::  Level 3
 
     Have a look at the documentation at `astropy.table
-    <http://docs.astropy.org/en/v0.2/table/index.html>`_ and see if you can
-    find a way to make a copy of the original ROSAT table containing only
+    <http://docs.astropy.org/en/v0.2/table/index.html>`_ to understand better
+    all the different ways you can select/copy rows and columns. See if you
+    can find a way to make a copy of the original ROSAT table containing only
     RA/Dec and Count rate, but using only item access notation, no methods.
 
 .. raw:: html
