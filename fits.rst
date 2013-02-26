@@ -30,6 +30,13 @@ Then start up IPython with the ``--pylab`` option to enable easy plotting::
 
     ipython --pylab
 
+Data
+----
+
+The data used in this page (``gll_iem_v02_P6_V11_DIFFUSE.fit``) is an old
+version of the LAT Background Model (Pass 6 V11 Diffuse front+back) which was
+chosen so as not to have to download the larger more recent file.
+
 Reading FITS files and accessing data
 -------------------------------------
 
@@ -137,7 +144,15 @@ in photon energy::
     >>> hdu.data = hdu.data[0,:,:]
 
 Note that this does not change the original FITS file, simply the FITS file
-object in memory. You can write the FITS file object to a file with::
+object in memory. Note that since the data is now 2-dimensional, we can remove the WCS keywords for the third dimension::
+
+    hdu.header.remove('CRPIX3')
+    hdu.header.remove('CRVAL3')
+    hdu.header.remove('CDELT3')
+    hdu.header.remove('CUNIT3')
+    hdu.header.remove('CTYPE3')
+
+You can write the FITS file object to a file with::
 
     >>> hdu.writeto('lat_background_model_slice.fits')
 
@@ -190,6 +205,17 @@ you can use the following convenience functions::
 
     >>> data = fits.getdata('gll_iem_v02_P6_V11_DIFFUSE.fit')
     >>> header = fits.getheader('gll_iem_v02_P6_V11_DIFFUSE.fit')
+
+To get the data or header for an HDU other than the first, you can specify the
+extension name or index. The second HDU is called ``energies``, so we can do::
+
+    data = fits.getdata('gll_iem_v02_P6_V11_DIFFUSE.fit', extname='energies')
+
+or::
+
+    data = fits.getdata('gll_iem_v02_P6_V11_DIFFUSE.fit', ext=1)
+
+and similarly for ``getheader``.
 
 Accessing Tabular Data
 ----------------------
@@ -272,7 +298,7 @@ Practical Exercises
     Using Matplotlib, make an all-sky plot of the LAT Background Model in the
     Plate Carée projection showing the LAT Point Source Catalog overlaid with
     markers, and with the correct coordinates on the axes. You should do this
-    without using only ``astropy.io.fits``, Numpy, and Matplotlib (no WCS or
+    using only ``astropy.io.fits``, Numpy, and Matplotlib (no WCS or
     coordinate conversion library). Hint: the -CAR projection is such that the
     x pixel position is proportional to longitude, and the y pixel position to
     latitude. Bonus points for a pretty colormap.

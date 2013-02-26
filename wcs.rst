@@ -70,7 +70,7 @@ convert pixel to world coordinates::
     >>> print wx, wy
     352.67460912268814 -15.413728717834152
 
-This converts the pixel coordinates (22, 32) to the native world coordinate
+This converts the pixel coordinates (250, 100) to the native world coordinate
 system of the transformation. Note the third argument, set to ``1``, which
 indicates whether the pixel coordinates should be treated as starting from (1,
 1) (as FITS files do) or from (0, 0). Converting from world to pixel
