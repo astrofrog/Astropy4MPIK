@@ -157,12 +157,14 @@ image have a valid position on the sky.
     # Instantiate WCS object
     w = WCS(header)
 
-    # Find pixel positions of LAT sources
-    px, py = w.wcs_world2pix(l, b, 1)
+    # Find pixel positions of LAT sources. Note we use ``0`` here for the last
+    # argument, since we want zero based indices (for Numpy), not the FITS
+    # pixel positions.
+    px, py = w.wcs_world2pix(l, b, 0)
 
-    # Round to the nearest integer
-    px = px.astype(int)
-    py = py.astype(int)
+    # Find the nearest integer pixel
+    px = np.round(px).astype(int)
+    py = np.round(py).astype(int)
 
     # Find the ROSAT fluxes (note the reversed index order)
     fluxes = image[py, px]
@@ -172,12 +174,8 @@ image have a valid position on the sky.
 
 which gives::
 
-    [ 135.67030334  140.80836487  168.37666321 ...,  267.01193237  100.35219574
-   98.35223389]
-
-Note that this is approximate and may be off by a pixel in some cases, so make
-sure that you understand how the rounding is working before using this in your
-work.
+    [ 123.7635498   163.27642822  221.76609802 ...,  255.07995605  100.35219574
+       87.62506104]
 
 .. raw:: html
 
