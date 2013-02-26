@@ -208,6 +208,29 @@ as look-up tables::
     {'flux': 4.5, 'dec': 41.27, 'name': 'm31', 'ra': 10.68}
 
 
+Numpy arrays
+------------
+
+`Numpy <http://www.numpy.org>`_ is a package that provides a data type we will
+refer to as a Numpy array. This behaves similarly to arrays in e.g. Fortran or
+IDL::
+
+    >>> import numpy as np
+    >>> a = np.array([1,2,3])
+    >>> b = np.array([4,5,6])
+    >>> a + b
+    array([5, 7, 9])
+    >>> a * 2 - b
+    array([-2, -1,  0])
+    >>> a[2]
+    3
+
+Numpy supports multi-dimensional array, and slicing, stepping, and indexing,
+similarly to other languages. Indexing is zero-based (the first element is
+``a[0]``) and the last element in a slice is exclusive (``a[0:2]`` returns an
+array made from ``a[0]`` and ``a[1]``). Slicing an array return a
+**reference**, not a copy, of the data.
+
 A note on Python objects
 ------------------------
 
