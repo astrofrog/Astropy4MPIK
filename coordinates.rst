@@ -104,7 +104,7 @@ Practical Exercises
 
 .. admonition::  Level 2
 
-    Using the ROSAT Point source catalog (from :doc:tables), convert all the
+    Using the ROSAT Point source catalog (from :doc:`tables`), convert all the
     equatorial coordinates to Galactic coordinates, and make a new plot (but
     don't worry about the bright sources).
 
