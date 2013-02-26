@@ -158,7 +158,7 @@ or to just get the numerical value::
 
 .. admonition::  Level 3
 
-    Try and convert 3 microns to eV using the units framework. You will need
+    Try and convert 3 Angstroms to keV using the units framework. You will need
     to look through the documentation for `astropy.units <http://docs.astropy.org/en/v0.2/units/index.html>`_ to see how this can be made to work.
 
 .. raw:: html
@@ -167,12 +167,12 @@ or to just get the numerical value::
 
 ::
 
-    >>> (3 * u.micron).to(u.eV)
+    >>> (3 * u.angstrom).to(u.keV)
     ...
-    UnitsException: 'micron' (length) and 'eV' (energy) are not convertible
+    UnitsException: 'angstrom' (length) and 'keV' (energy) are not convertible
 
-    >>> (3 * u.micron).to(u.eV, equivalencies=u.spectral())
-    <Quantity 0.413280643067 eV>
+    >>> (3 * u.angstrom).to(u.keV, equivalencies=u.spectral())
+    <Quantity 4.13280643067 keV>
 
 .. raw:: html
 
