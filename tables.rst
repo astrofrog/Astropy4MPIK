@@ -268,7 +268,7 @@ Practical Exercises
     t_bright = t[t['Count'] > 2.]
 
     fig = plt.figure()
-    ax = fig.add_subplot(1,1,1)
+    ax = fig.add_subplot(1,1,1, aspect='equal')
     ax.scatter(t['RAJ2000'], t['DEJ2000'], s=1, color='black')
     ax.scatter(t_bright['RAJ2000'], t_bright['DEJ2000'], color='red')
     ax.set_xlim(360., 0.)
