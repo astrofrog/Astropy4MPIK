@@ -227,8 +227,9 @@ Numpy array::
 
     >>> fits.writeto('new_catalog.fits', np.array(t))
 
-Future versions of Astropy will support reading/writing FITS tables directly
-from the ``Table`` class.
+The main drawback of the current approach is that table metadata like UCDs and
+other FITS header keywords are lost. Future versions of Astropy will support
+reading/writing FITS tables directly from the ``Table`` class.
 
 Practical Exercises
 -------------------
