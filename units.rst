@@ -1,6 +1,15 @@
 Unit manipulation
 =================
 
+Documentation
+-------------
+
+For more information about the features presented below, you can read the
+`astropy.units <http://docs.astropy.org/en/v0.2/units/index.html>`_ docs.
+
+Representing units and quantities
+----------------------------------
+
 Astropy includes a powerful framework for units that allows users to attach
 units to scalars and arrays, and manipulate/combine these, keeping track of
 the units.
@@ -41,6 +50,9 @@ scalars or arrays, creating ``Quantity`` objects::
 
     >>> np.array([1.2, 2.2, 1.7]) * u.pc / u.year
     <Quantity [ 1.2  2.2  1.7] pc / (yr)>
+
+Combining and converting units
+------------------------------
 
 Quantities can then be combined::
 
@@ -83,9 +95,12 @@ To decompose into c.g.s. units, one can do::
 Using physical constants
 ------------------------
 
-The `astropy.constants` module contains physical constants relevant for
-Astronomy, and these are defined with units attached to them using the
-``astropy.units`` framework. If we want to compute the Gravitational force felt by a 100. * u.kg space probe by the Sun, at a distance of 3.2au, we can do::
+The `astropy.constants
+<http://docs.astropy.org/en/v0.2/constants/index.html>`_ module contains
+physical constants relevant for Astronomy, and these are defined with units
+attached to them using the ``astropy.units`` framework. If we want to compute
+the Gravitational force felt by a 100. * u.kg space probe by the Sun, at a
+distance of 3.2au, we can do::
 
     >>> from astropy.constants import G
 
@@ -97,50 +112,67 @@ Astronomy, and these are defined with units attached to them using the
     >>> F.to(u.N)
     <Quantity 0.05792707869188191 N>
 
-The full list of available physical constants is shown `here
-<http://docs.astropy.org/en/v0.2/constants/index.html#module-astropy.constants>
-`_ (and additions are welcome!).
+The full list of available physical constants is shown `here <http://docs.astropy.org/en/v0.2/constants/index.html#module-astropy.constants>`_ (and additions are welcome!).
 
 Practical Exercises
 -------------------
 
 .. admonition::  Level 1
 
-    Question here
+    What is 1 barn megaparsecs in teaspoons?
 
 .. raw:: html
 
    <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
-Solution
+::
+
+    >>> (1. * u.barn * u.Mpc).to(u.tsp)
+    <Quantity 0.626035029893 tsp>
 
 .. raw:: html
 
    </div>
-   
+
 .. admonition::  Level 2
 
-    Question here
+    What is 3 nm^2 Mpc / m^3 in dimensionless units?
 
 .. raw:: html
 
    <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2">
 
-Solution
+::
+
+    >>> (3. * u.nm**2 * u.Mpc / u.m**3).decompose()
+    <Quantity 92570.327444 >
+
+or to just get the numerical value::
+
+    >>> (3. * u.nm**2 * u.Mpc / u.m**3).decompose().value
+    92570.327444015755
 
 .. raw:: html
 
    </div>
-   
+
 .. admonition::  Level 3
 
-    Question here
+    Try and convert 3 microns to eV using the units framework. You will need
+    to look through the documentation for `astropy.units <http://docs.astropy.org/en/v0.2/units/index.html>`_ to see how this can be made to work.
 
 .. raw:: html
 
    <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
 
-Solution
+::
+
+    >>> (3 * u.micron).to(u.eV)
+    ...
+    UnitsException: 'micron' (length) and 'eV' (energy) are not convertible
+
+    >>> (3 * u.micron).to(u.eV, equivalencies=u.spectral())
+    <Quantity 0.413280643067 eV>
 
 .. raw:: html
 
