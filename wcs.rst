@@ -175,6 +175,10 @@ which gives::
     [ 135.67030334  140.80836487  168.37666321 ...,  267.01193237  100.35219574
    98.35223389]
 
+Note that this is approximate and may be off by a pixel in some cases, so make
+sure that you understand how the rounding is working before using this in your
+work.
+
 .. raw:: html
 
    </div>
