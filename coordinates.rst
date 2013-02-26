@@ -1,6 +1,15 @@
 Celestial Coordinates
 =====================
 
+Documentation
+-------------
+
+For more information about the features presented below, you can read the
+`astropy.coordinates <http://docs.astropy.org/en/v0.2/coordinates/index.html>`_ docs.
+
+Representing and converting coordinates
+---------------------------------------
+
 Astropy includes a framework to represent celestial coordinates and transform
 between them. Astropy 0.2 only includes a few common coordinate systems (ICRS,
 FK4, FK5, and Galactic), but future versions will include more built-in
@@ -39,13 +48,13 @@ attribute-style access with short names for the built-in systems::
     >>> c.galactic
     <GalacticCoordinates l=121.17422 deg, b=-21.57283 deg>
 
-but explicit transformations via the `transform_to` method are also
+but explicit transformations via the ``transform_to`` method are also
 available::
 
     >>> c.transform_to(coord.GalacticCoordinates)
     <GalacticCoordinates l=121.17422 deg, b=-21.57283 deg>
 
-The `Coordinates` subpackage also provides a quick way to get coordinates for
+The ``astropy.coordinates`` subpackage also provides a quick way to get coordinates for
 named objects (with an internet connection). All coordinate classes have a
 special class method, `from_name()`, that accepts a string and queries `Sesame
 <http://cds.u-strasbg.fr/cgi-bin/Sesame>`_ to retrieve coordinates for that
@@ -66,48 +75,74 @@ This works for any coordinate class::
     This is intended to be a convenience, and is very simple. If you
     need precise coordinates for an object you should find the appropriate
     reference for that measurement and input the coordinates manually.
-    
+
 Practical Exercises
 -------------------
 
 .. admonition::  Level 1
 
-    Question here
+    Find the coordinates of the Crab Nebula in ICRS coordinates, and convert
+    them to Galactic Coordinates
 
 .. raw:: html
 
    <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
-Solution
+    >>> from astropy import coordinates as coord
+    >>> crab = coord.ICRSCoordinates.from_name('M1')
+    >>> print crab
+    <ICRSCoordinates RA=83.63308 deg, Dec=22.01450 deg>
+    >>> crab_gal = crab.transform_to(coord.GalacticCoordinates)
+    >>> print crab_gal
+    <GalacticCoordinates l=-175.44248 deg, b=-5.78434 deg>
 
 .. raw:: html
 
    </div>
-   
+
 .. admonition::  Level 2
 
-    Question here
+    Using the ROSAT Point source catalog (from :doc:tables), convert all the
+    equatorial coordinates to Galactic coordinates, and make a new plot (but
+    don't worry about the bright sources).
 
 .. raw:: html
 
    <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2">
 
-Solution
+::
+
+    from astropy import units as u
+    from astropy import coordinates as coord
+    from astropy.table import Table
+    from matplotlib import pyplot as plt
+
+    t = Table.read('rosat.vot', format='votable')
+
+    l = []
+    b = []
+    for row in t:
+        eq = coord.FK5Coordinates(row['RAJ2000'], row['DEJ2000'], unit=(u.degree, u.degree))
+        gal = eq.transform_to(coord.GalacticCoordinates)
+        l.append(gal.l.degrees)
+        b.append(gal.b.degrees)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(1,1,1, aspect='equal')
+    ax.scatter(l, b, s=1, color='black')
+    ax.set_xlim(180., -180.)
+    ax.set_ylim(-90., 90.)
+    ax.set_xlabel("Galactic Longitude")
+    ax.set_ylabel("Galactic Latitude")
+
+    fig.savefig('coord_level2.png', bbox_inches='tight')
+
+.. image:: coord_level2.png
 
 .. raw:: html
 
    </div>
-   
+
 .. admonition::  Level 3
 
-    Question here
-
-.. raw:: html
-
-   <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
-
-Solution
-
-.. raw:: html
-
-   </div>
+    For fun, try and reproduce `this <http://www.mpe.mpg.de/236548/rosat-allsky.jpg>`_!
