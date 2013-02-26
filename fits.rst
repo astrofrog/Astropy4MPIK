@@ -121,7 +121,7 @@ header keywords using standard item notation::
 Provided that we started up ``ipython`` with the ``--pylab`` flag, we can plot
 one of the slices in photon energy::
 
-    plt.imshow(hdu.data[0,:,:], origin='lower')
+    >>> plt.imshow(hdu.data[0,:,:], origin='lower')
 
 which gives:
 
@@ -212,11 +212,11 @@ you can use the following convenience functions::
 To get the data or header for an HDU other than the first, you can specify the
 extension name or index. The second HDU is called ``energies``, so we can do::
 
-    data = fits.getdata('gll_iem_v02_P6_V11_DIFFUSE.fit', extname='energies')
+    >>> data = fits.getdata('gll_iem_v02_P6_V11_DIFFUSE.fit', extname='energies')
 
 or::
 
-    data = fits.getdata('gll_iem_v02_P6_V11_DIFFUSE.fit', ext=1)
+    >>> data = fits.getdata('gll_iem_v02_P6_V11_DIFFUSE.fit', ext=1)
 
 and similarly for ``getheader``.
 
