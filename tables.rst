@@ -208,6 +208,27 @@ Criteria can be combined::
 
     >>> len(t_sub)
     642
+    
+Note about FITS tables
+----------------------
+    
+In Astropy 0.2, FITS tables cannot be read/written directly from the ``Table``
+class. To create a ``Table`` object from a FITS table, you can use
+``astropy.io.fits`` to read in the table to a Numpy array, then initialize the
+table with it::
+
+    >>> from astropy.io import fits
+    >>> from astropy.table import Table
+    >>> data = fits.getdata('catalog.fits', 1)
+    >>> t = Table(data)
+    
+and to write out, you can use ``astropy.io.fits``, converting the table to a
+Numpy array::
+
+    >>> fits.writeto('new_catalog.fits', np.array(t))
+
+Future versions of Astropy will support reading/writing FITS tables directly
+from the ``Table`` class.
 
 Practical Exercises
 -------------------
@@ -228,6 +249,27 @@ Practical Exercises
 
     >>> t.keep_columns(['RAJ2000', 'DEJ2000', 'Count'])
     >>> print t
+     RAJ2000   DEJ2000    Count
+    --------- --------- ---------
+      0.00000 -39.48403      0.13
+      0.02917   8.28153      0.19
+      0.04167 -63.59528      0.19
+      0.04958   5.38833      0.26
+      0.05250   1.77250     0.081
+      0.05625  57.94125      0.12
+      0.08125 -26.17556      0.12
+          ...       ...       ...
+    359.87207  33.72472      0.16
+    359.87875 -40.26139      0.13
+    359.92041 -31.72847     0.058
+    359.92166  83.12195     0.066
+    359.93625  22.00389     0.052
+    359.99625   8.56528      0.12
+    
+    Note that you can also do this with::
+    
+    >>> t_new = t['RAJ2000', 'DEJ2000', 'Count']
+    >>> print t_new
      RAJ2000   DEJ2000    Count
     --------- --------- ---------
       0.00000 -39.48403      0.13
@@ -286,31 +328,22 @@ Practical Exercises
 
 .. admonition::  Level 3
 
-    Have a look at the documentation at `astropy.table
-    <http://docs.astropy.org/en/v0.2/table/index.html>`_ to understand better
-    all the different ways you can select/copy rows and columns. See if you
-    can find a way to make a copy of the original ROSAT table containing only
-    RA/Dec and Count rate, but using only item access notation, no methods.
+    Try and write out the ROSAT catalog into a format that you can read into
+    another software package (see `here
+    <http://docs.astropy.org/en/v0.2/table/io.html>`_ for more details). For
+    example, try and write out the catalog into CSV format, then read it into
+    a spreadsheet software package (e.g. Excel, Google Docs, Numbers,
+    OpenOffice).
 
 .. raw:: html
 
    <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
 
-::
+To write out the file::
 
-    >>> t = Table.read('rosat.vot', format='votable')
-    >>> t['RAJ2000', 'DEJ2000', 'Count']
-    <Table rows=18806 names=('RAJ2000','DEJ2000','Count')>
-    masked_array(data = [(0.0, -39.48403, 0.13099999725818634)
-     (0.02917, 8.28153, 0.18700000643730164)
-     (0.04167, -63.59528, 0.1899999976158142) ...,
-     (359.92166, 83.12195, 0.06639999896287918)
-     (359.93625, 22.00389, 0.05249999836087227)
-     (359.99625, 8.56528, 0.11500000208616257)],
-                 mask = [(False, False, False) (False, False, False) (False, False, False) ...,
-     (False, False, False) (False, False, False) (False, False, False)],
-           fill_value = (1e+20, 1e+20, 1.0000000200408773e+20),
-                dtype = [('RAJ2000', '<f8'), ('DEJ2000', '<f8'), ('Count', '<f4')])
+    >>> t.write('rosat2.csv', format='ascii', delimiter=',')
+
+Then you should be able to load it into another software package.
 
 .. raw:: html
 
